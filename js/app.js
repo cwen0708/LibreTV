@@ -180,7 +180,7 @@ function checkAdultAPIsSelected() {
 
         // 修改描述文字
         if (filterDescription) {
-            filterDescription.innerHTML = '<strong class="text-pink-300">选中黄色资源站时无法启用此过滤</strong>';
+            filterDescription.innerHTML = '<strong class="text-pink-300">選中黃色資源站時無法啟用此過濾</strong>';
         }
 
         // 移除提示信息（如果存在）
@@ -195,7 +195,7 @@ function checkAdultAPIsSelected() {
 
         // 恢复原来的描述文字
         if (filterDescription) {
-            filterDescription.innerHTML = '过滤"伦理片"等黄色内容';
+            filterDescription.innerHTML = '過濾"倫理片"等黃色內容';
         }
 
         // 移除提示信息
@@ -283,11 +283,11 @@ function updateCustomApi(index) {
     const detail = detailInput ? detailInput.value.trim() : '';
     const isAdult = isAdultInput ? isAdultInput.checked : false;
     if (!name || !url) {
-        showToast('请输入API名称和链接', 'warning');
+        showToast('請輸入API名稱和連結', 'warning');
         return;
     }
     if (!/^https?:\/\/.+/.test(url)) {
-        showToast('API链接格式不正确，需以http://或https://开头', 'warning');
+        showToast('API連結格式不正確，需以http://或https://開頭', 'warning');
         return;
     }
     if (url.endsWith('/')) url = url.slice(0, -1);
@@ -412,11 +412,11 @@ function addCustomApi() {
     const detail = detailInput ? detailInput.value.trim() : '';
     const isAdult = isAdultInput ? isAdultInput.checked : false;
     if (!name || !url) {
-        showToast('请输入API名称和链接', 'warning');
+        showToast('請輸入API名稱和連結', 'warning');
         return;
     }
     if (!/^https?:\/\/.+/.test(url)) {
-        showToast('API链接格式不正确，需以http://或https://开头', 'warning');
+        showToast('API連結格式不正確，需以http://或https://開頭', 'warning');
         return;
     }
     if (url.endsWith('/')) {
@@ -596,13 +596,13 @@ function resetSearchArea() {
     try {
         window.history.pushState(
             {},
-            `LibreTV - 免费在线视频搜索与观看平台`,
+            `LibreTV - 免費在線視頻搜索與觀看平台`,
             `/`
         );
         // 更新页面标题
-        document.title = `LibreTV - 免费在线视频搜索与观看平台`;
+        document.title = `LibreTV - 免費在線視頻搜索與觀看平台`;
     } catch (e) {
-        console.error('更新浏览器历史失败:', e);
+        console.error('更新瀏覽器歷史失敗:', e);
     }
 }
 
@@ -627,12 +627,12 @@ async function search() {
     const query = document.getElementById('searchInput').value.trim();
 
     if (!query) {
-        showToast('请输入搜索内容', 'info');
+        showToast('請輸入搜尋內容', 'info');
         return;
     }
 
     if (selectedAPIs.length === 0) {
-        showToast('请至少选择一个API源', 'warning');
+        showToast('請至少選擇一個API來源', 'warning');
         return;
     }
 
@@ -687,7 +687,7 @@ async function search() {
 
         const resultsDiv = document.getElementById('results');
 
-        // 如果没有结果
+        // 如果沒有結果
         if (!allResults || allResults.length === 0) {
             resultsDiv.innerHTML = `
                 <div class="col-span-full text-center py-16">
@@ -695,8 +695,8 @@ async function search() {
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
                               d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
-                    <h3 class="mt-2 text-lg font-medium text-gray-400">没有找到匹配的结果</h3>
-                    <p class="mt-1 text-sm text-gray-500">请尝试其他关键词或更换数据源</p>
+                    <h3 class="mt-2 text-lg font-medium text-gray-400">沒有找到符合的結果</h3>
+                    <p class="mt-1 text-sm text-gray-500">請嘗試其他關鍵字或更換資料來源</p>
                 </div>
             `;
             hideLoading();
@@ -716,14 +716,14 @@ async function search() {
             // 更新页面标题
             document.title = `搜索: ${query} - LibreTV`;
         } catch (e) {
-            console.error('更新浏览器历史失败:', e);
+            console.error('更新瀏覽器歷史失敗:', e);
             // 如果更新URL失败，继续执行搜索
         }
 
-        // 处理搜索结果过滤：如果启用了黄色内容过滤，则过滤掉分类含有敏感内容的项目
+        // 內容過濾提示
         const yellowFilterEnabled = localStorage.getItem('yellowFilterEnabled') === 'true';
         if (yellowFilterEnabled) {
-            const banned = ['伦理片', '福利', '里番动漫', '门事件', '萝莉少女', '制服诱惑', '国产传媒', 'cosplay', '黑丝诱惑', '无码', '日本无码', '有码', '日本有码', 'SWAG', '网红主播', '色情片', '同性片', '福利视频', '福利片'];
+            const banned = ['倫理片', '福利', '里番動漫', '門事件', '蘿莉少女', '制服誘惑', '國產傳媒', 'cosplay', '黑絲誘惑', '無碼', '日本無碼', '有碼', '日本有碼', 'SWAG', '網紅主播', '色情片', '同性片', '福利視頻', '福利片'];
             allResults = allResults.filter(item => {
                 const typeName = item.type_name || '';
                 return !banned.some(keyword => typeName.includes(keyword));
@@ -756,7 +756,7 @@ async function search() {
                         <div class="relative flex-shrink-0 search-card-img-container">
                             <img src="${item.vod_pic}" alt="${safeName}" 
                                  class="h-full w-full object-cover transition-transform hover:scale-110" 
-                                 onerror="this.onerror=null; this.src='https://via.placeholder.com/300x450?text=无封面'; this.classList.add('object-contain');" 
+                                 onerror="this.onerror=null; this.src='https://via.placeholder.com/300x450?text=無封面'; this.classList.add('object-contain');" 
                                  loading="lazy">
                             <div class="absolute inset-0 bg-gradient-to-r from-black/30 to-transparent"></div>
                         </div>` : ''}
@@ -776,7 +776,7 @@ async function search() {
                                       </span>` : ''}
                                 </div>
                                 <p class="text-gray-400 line-clamp-2 overflow-hidden ${hasCover ? '' : 'text-center'} mb-2">
-                                    ${(item.vod_remarks || '暂无介绍').toString().replace(/</g, '&lt;')}
+                                    ${(item.vod_remarks || '暫無介紹').toString().replace(/</g, '&lt;')}
                                 </p>
                             </div>
                             
@@ -803,9 +803,9 @@ async function search() {
     } catch (error) {
         console.error('搜索错误:', error);
         if (error.name === 'AbortError') {
-            showToast('搜索请求超时，请检查网络连接', 'error');
+            showToast('搜尋請求逾時，請檢查網路連線', 'error');
         } else {
-            showToast('搜索请求失败，请稍后重试', 'error');
+            showToast('搜尋請求失敗，請稍後再試', 'error');
         }
     } finally {
         hideLoading();
@@ -866,7 +866,7 @@ async function showDetails(id, vod_name, sourceCode) {
         }
     }
     if (!id) {
-        showToast('视频ID无效', 'error');
+        showToast('視頻ID無效', 'error');
         return;
     }
 
@@ -880,7 +880,7 @@ async function showDetails(id, vod_name, sourceCode) {
             const customIndex = sourceCode.replace('custom_', '');
             const customApi = getCustomApiInfo(customIndex);
             if (!customApi) {
-                showToast('自定义API配置无效', 'error');
+                showToast('自定义API配置無效', 'error');
                 hideLoading();
                 return;
             }
@@ -911,8 +911,8 @@ async function showDetails(id, vod_name, sourceCode) {
             ` <span class="text-sm font-normal text-gray-400">(${data.videoInfo.source_name})</span>` : '';
 
         // 不对标题进行截断处理，允许完整显示
-        modalTitle.innerHTML = `<span class="break-words">${vod_name || '未知视频'}</span>${sourceName}`;
-        currentVideoTitle = vod_name || '未知视频';
+        modalTitle.innerHTML = `<span class="break-words">${vod_name || '未知視頻'}</span>${sourceName}`;
+        currentVideoTitle = vod_name || '未知視頻';
 
         if (data.episodes && data.episodes.length > 0) {
             // 构建详情信息HTML
@@ -929,16 +929,16 @@ async function showDetails(id, vod_name, sourceCode) {
                 <div class="modal-detail-info">
                     ${hasGridContent ? `
                     <div class="detail-grid">
-                        ${data.videoInfo.type ? `<div class="detail-item"><span class="detail-label">类型:</span> <span class="detail-value">${data.videoInfo.type}</span></div>` : ''}
+                        ${data.videoInfo.type ? `<div class="detail-item"><span class="detail-label">類型:</span> <span class="detail-value">${data.videoInfo.type}</span></div>` : ''}
                         ${data.videoInfo.year ? `<div class="detail-item"><span class="detail-label">年份:</span> <span class="detail-value">${data.videoInfo.year}</span></div>` : ''}
-                        ${data.videoInfo.area ? `<div class="detail-item"><span class="detail-label">地区:</span> <span class="detail-value">${data.videoInfo.area}</span></div>` : ''}
-                        ${data.videoInfo.director ? `<div class="detail-item"><span class="detail-label">导演:</span> <span class="detail-value">${data.videoInfo.director}</span></div>` : ''}
+                        ${data.videoInfo.area ? `<div class="detail-item"><span class="detail-label">地區:</span> <span class="detail-value">${data.videoInfo.area}</span></div>` : ''}
+                        ${data.videoInfo.director ? `<div class="detail-item"><span class="detail-label">導演:</span> <span class="detail-value">${data.videoInfo.director}</span></div>` : ''}
                         ${data.videoInfo.actor ? `<div class="detail-item"><span class="detail-label">主演:</span> <span class="detail-value">${data.videoInfo.actor}</span></div>` : ''}
-                        ${data.videoInfo.remarks ? `<div class="detail-item"><span class="detail-label">备注:</span> <span class="detail-value">${data.videoInfo.remarks}</span></div>` : ''}
+                        ${data.videoInfo.remarks ? `<div class="detail-item"><span class="detail-label">備註:</span> <span class="detail-value">${data.videoInfo.remarks}</span></div>` : ''}
                     </div>` : ''}
                     ${descriptionText ? `
                     <div class="detail-desc">
-                        <p class="detail-label">简介:</p>
+                        <p class="detail-label">簡介:</p>
                         <p class="detail-desc-content">${descriptionText}</p>
                     </div>` : ''}
                 </div>
@@ -963,7 +963,7 @@ async function showDetails(id, vod_name, sourceCode) {
                         <span class="text-gray-400 text-sm">共 ${data.episodes.length} 集</span>
                     </div>
                     <button onclick="copyLinks()" class="px-3 py-1.5 bg-blue-600 hover:bg-blue-700 text-white rounded text-sm transition-colors">
-                        复制链接
+                        複製連結
                     </button>
                 </div>
                 <div id="episodesGrid" class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-2">
@@ -973,16 +973,16 @@ async function showDetails(id, vod_name, sourceCode) {
         } else {
             modalContent.innerHTML = `
                 <div class="text-center py-8">
-                    <div class="text-red-400 mb-2">❌ 未找到播放资源</div>
-                    <div class="text-gray-500 text-sm">该视频可能暂时无法播放，请尝试其他视频</div>
+                    <div class="text-red-400 mb-2">❌ 未找到播放資源</div>
+                    <div class="text-gray-500 text-sm">該視頻可能暫時無法播放，請嘗試其他視頻</div>
                 </div>
             `;
         }
 
         modal.classList.remove('hidden');
     } catch (error) {
-        console.error('获取详情错误:', error);
-        showToast('获取详情失败，请稍后重试', 'error');
+        console.error('獲取詳情錯誤:', error);
+        showToast('獲取詳情失敗，請稍後再試', 'error');
     } finally {
         hideLoading();
     }
@@ -1011,7 +1011,7 @@ function playVideo(url, vod_name, sourceCode, episodeIndex = 0, vodId = '') {
 
     // 保存当前状态到localStorage
     try {
-        localStorage.setItem('currentVideoTitle', vod_name || '未知视频');
+        localStorage.setItem('currentVideoTitle', vod_name || '未知視頻');
         localStorage.setItem('currentEpisodes', JSON.stringify(currentEpisodes));
         localStorage.setItem('currentEpisodeIndex', episodeIndex);
         localStorage.setItem('currentSourceCode', sourceCode || '');
@@ -1019,7 +1019,7 @@ function playVideo(url, vod_name, sourceCode, episodeIndex = 0, vodId = '') {
         localStorage.setItem('lastSearchPage', currentPath);
         localStorage.setItem('lastPageUrl', currentPath);  // 确保保存返回页面URL
     } catch (e) {
-        console.error('保存播放状态失败:', e);
+        console.error('保存播放狀態失敗:', e);
     }
 
     // 在当前标签页中打开播放页面
@@ -1090,7 +1090,7 @@ function playNextEpisode(sourceCode) {
 // 处理播放器加载错误
 function handlePlayerError() {
     hideLoading();
-    showToast('视频播放加载失败，请尝试其他视频源', 'error');
+    showToast('視頻播放加載失敗，請嘗試其他視頻源', 'error');
 }
 
 // 辅助函数用于渲染剧集按钮（使用当前的排序状态）
@@ -1113,9 +1113,9 @@ function copyLinks() {
     const episodes = episodesReversed ? [...currentEpisodes].reverse() : currentEpisodes;
     const linkList = episodes.join('\r\n');
     navigator.clipboard.writeText(linkList).then(() => {
-        showToast('播放链接已复制', 'success');
+        showToast('播放連結已複製', 'success');
     }).catch(err => {
-        showToast('复制失败，请检查浏览器权限', 'error');
+        showToast('複製失敗，請檢查瀏覽器權限', 'error');
     });
 }
 
@@ -1155,15 +1155,15 @@ async function importConfigFromUrl() {
         <div class="bg-[#191919] rounded-lg p-6 max-w-md w-full max-h-[90vh] overflow-y-auto relative">
             <button id="closeUrlModal" class="absolute top-4 right-4 text-gray-400 hover:text-white text-xl">&times;</button>
             
-            <h3 class="text-xl font-bold mb-4">从URL导入配置</h3>
+            <h3 class="text-xl font-bold mb-4">從URL導入配置</h3>
             
             <div class="mb-4">
-                <input type="text" id="configUrl" placeholder="输入配置文件URL" 
+                <input type="text" id="configUrl" placeholder="輸入配置文件URL" 
                        class="w-full px-3 py-2 bg-[#222] border border-[#333] rounded-lg text-white focus:outline-none focus:ring-1 focus:ring-blue-500">
             </div>
             
             <div class="flex justify-end space-x-2">
-                <button id="confirmUrlImport" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded">导入</button>
+                <button id="confirmUrlImport" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded">導入</button>
                 <button id="cancelUrlImport" class="bg-[#444] hover:bg-[#555] text-white px-4 py-2 rounded">取消</button>
             </div>
         </div>`;
@@ -1184,7 +1184,7 @@ async function importConfigFromUrl() {
     document.getElementById('confirmUrlImport').addEventListener('click', async () => {
         const url = document.getElementById('configUrl').value.trim();
         if (!url) {
-            showToast('请输入配置文件URL', 'warning');
+            showToast('請輸入配置文件URL', 'warning');
             return;
         }
 
@@ -1192,15 +1192,15 @@ async function importConfigFromUrl() {
         try {
             const urlObj = new URL(url);
             if (urlObj.protocol !== 'http:' && urlObj.protocol !== 'https:') {
-                showToast('URL必须以http://或https://开头', 'warning');
+                showToast('URL必須以http://或https://開頭', 'warning');
                 return;
             }
         } catch (e) {
-            showToast('URL格式不正确', 'warning');
+            showToast('URL格式不正確', 'warning');
             return;
         }
 
-        showLoading('正在从URL导入配置...');
+        showLoading('正在從URL導入配置...');
 
         try {
             // 获取配置文件 - 直接请求URL
@@ -1210,16 +1210,16 @@ async function importConfigFromUrl() {
                     'Accept': 'application/json'
                 }
             });
-            if (!response.ok) throw '获取配置文件失败';
+            if (!response.ok) throw '獲取配置文件失敗';
 
             // 验证响应内容类型
             const contentType = response.headers.get('content-type');
             if (!contentType || !contentType.includes('application/json')) {
-                throw '响应不是有效的JSON格式';
+                throw '響應不是有效的JSON格式';
             }
 
             const config = await response.json();
-            if (config.name !== 'LibreTV-Settings') throw '配置文件格式不正确';
+            if (config.name !== 'LibreTV-Settings') throw '配置文件格式不正確';
 
             // 验证哈希
             const dataHash = await sha256(JSON.stringify(config.data));
@@ -1230,13 +1230,13 @@ async function importConfigFromUrl() {
                 localStorage.setItem(item, config.data[item]);
             }
 
-            showToast('配置文件导入成功，3 秒后自动刷新本页面。', 'success');
+            showToast('配置文件導入成功，3 秒後自動刷新本頁面。', 'success');
             setTimeout(() => {
                 window.location.reload();
             }, 3000);
         } catch (error) {
-            const message = typeof error === 'string' ? error : '导入配置失败';
-            showToast(`从URL导入配置出错 (${message})`, 'error');
+            const message = typeof error === 'string' ? error : '導入配置失敗';
+            showToast(`從URL導入配置出錯 (${message})`, 'error');
         } finally {
             hideLoading();
             document.body.removeChild(modal);
@@ -1256,22 +1256,22 @@ async function importConfig() {
     showImportBox(async (file) => {
         try {
             // 检查文件类型
-            if (!(file.type === 'application/json' || file.name.endsWith('.json'))) throw '文件类型不正确';
+            if (!(file.type === 'application/json' || file.name.endsWith('.json'))) throw '文件類型不正確';
 
             // 检查文件大小
-            if (file.size > 1024 * 1024 * 10) throw new Error('文件大小超过 10MB');
+            if (file.size > 1024 * 1024 * 10) throw new Error('文件大小超過 10MB');
 
-            // 读取文件内容
+            // 讀取文件內容
             const content = await new Promise((resolve, reject) => {
                 const reader = new FileReader();
                 reader.onload = () => resolve(reader.result);
-                reader.onerror = () => reject('文件读取失败');
+                reader.onerror = () => reject('文件讀取失敗');
                 reader.readAsText(file);
             });
 
             // 解析并验证配置
             const config = JSON.parse(content);
-            if (config.name !== 'LibreTV-Settings') throw '配置文件格式不正确';
+            if (config.name !== 'LibreTV-Settings') throw '配置文件格式不正確';
 
             // 验证哈希
             const dataHash = await sha256(JSON.stringify(config.data));
@@ -1282,13 +1282,13 @@ async function importConfig() {
                 localStorage.setItem(item, config.data[item]);
             }
 
-            showToast('配置文件导入成功，3 秒后自动刷新本页面。', 'success');
+            showToast('配置文件導入成功，3 秒後自動刷新本頁面。', 'success');
             setTimeout(() => {
                 window.location.reload();
             }, 3000);
         } catch (error) {
-            const message = typeof error === 'string' ? error : '配置文件格式错误';
-            showToast(`配置文件读取出错 (${message})`, 'error');
+            const message = typeof error === 'string' ? error : '配置文件格式錯誤';
+            showToast(`配置文件讀取出錯 (${message})`, 'error');
         }
     });
 }

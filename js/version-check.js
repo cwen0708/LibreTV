@@ -130,7 +130,7 @@ function addVersionInfoToFooter() {
         
         // 创建版本信息元素
         const versionElement = document.createElement('p');
-        versionElement.className = 'text-gray-500 text-sm mt-1 text-center md:text-left';
+        versionElement.className = 'text-gray-500 text-sm text-center md:text-left';
         
         // 添加当前版本信息
         versionElement.innerHTML = `版本: ${result.currentFormatted}`;
@@ -170,16 +170,10 @@ function addVersionInfoToFooter() {
 // 在页脚显示版本元素的辅助函数
 function displayVersionElement(element) {
     // 获取页脚元素
-    const footerElement = document.querySelector('.footer p.text-gray-500.text-sm');
+    const footerElement = document.getElementById('versionInfo');
     if (footerElement) {
         // 在原版权信息后插入版本信息
         footerElement.insertAdjacentElement('afterend', element);
-    } else {
-        // 如果找不到页脚元素，尝试在页脚区域最后添加
-        const footer = document.querySelector('.footer .container');
-        if (footer) {
-            footer.querySelector('div').appendChild(element);
-        }
     }
 }
 
